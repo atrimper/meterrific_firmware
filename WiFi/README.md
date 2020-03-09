@@ -34,3 +34,11 @@ To do this,
 1. Download this repository to your preferred directory (e.g. `Desktop`)
 2. In `Arduino IDE` > `Preferences`, change `Sketchbook Location` to `path-to-repository/WiFi/Arduino` (e.g. `~/Desktop/meterrific_firmware/WiFi/Arduino`) and click `OK` to apply changes
 3. In `Tools` > `Board: `, you should find `Generic ESP8266 Module`
+
+## Flashing Procedure
+1. Setup hardware and software as detailed above
+2. Compile code
+3. Attempt to upload code
+4. When you see `Connecting...` printing, press the reset and flash pushbuttons at the same time
+5. Release the reset pushbutton
+6. When you see upload percentages printing, release the flash pushbutton
