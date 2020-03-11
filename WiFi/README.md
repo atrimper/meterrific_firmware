@@ -17,7 +17,7 @@ Tested on [Arduino Uno](https://store.arduino.cc/usa/arduino-uno-rev3) and [Spar
 ## Hardware Setup
 The following table describe the necessary pin layout to flash and run firmware on the WiFi module.
 
-| WiFi Module | Arduino | Pushbutton 1 | Pushbutton 2 |
+| WiFi Module | Arduino | Reset Pushbutton | Flash Pushbutton |
 | ---| --- | --- | --- |
 | 3v3, EN | 3.3 V | | |
 | RST | | Pin 1 | |
