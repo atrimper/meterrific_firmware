@@ -1,11 +1,11 @@
 # meterrific_firmware/WiFi
-_Referred to as "wrapper"._
+_Referred to as "WiFi code"._
 
 ## About
-This wrapper brings together multiple libraries to smoothly develop firmware for an ESP8266 WiFi module with Arduino.
+This WiFi code brings together multiple libraries to interact with Firebase variables.
 
 ## Prerequisites
-You will need access to the following to use this wrapper.
+You will need access to the following to use this WiFi code.
 
 * Arduino IDE
 * Arduino
