@@ -12,7 +12,7 @@ Description:
 #define MM_TO_FOOT 0.00328084
 #define MM_TO_METER 0.001
 
-#include "VL53L0X\src\Adafruit_VL53L0X.h"
+#include "VL53L0X/src/Adafruit_VL53L0X.h"
 
 /*
 Purpose:

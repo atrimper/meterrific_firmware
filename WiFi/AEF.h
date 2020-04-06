@@ -1,19 +1,55 @@
+/**
+ * @file AEF.h
+ * @brief AEF function prototypes.
+ */
+
+#ifndef AEF_H
+#define AEF_H
+
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
 #include <ArduinoJson.h>
 
-// TODO: enter sleep mode to save power
-// TODO: check connection stability in case WiFi drops out
-
 class AEF {
-	public:
-		AEF(char*, char*, char*, char*);
-		int receiveData(char*);
-		bool transmitData(char*);
+    public:
+        /**
+         * @brief Initialize AEF object.
+         *
+         * @param FirebaseHost Firebase host address
+         * @param FirebaseKey Firebase secret key
+         * @param WiFiSsid WiFi name
+         * @param WiFiPassword WiFi password
+         */
+        AEF(char*, char*, char*, char*);
 
-	private:
-		char* FirebaseHost;
-		char* FirebaseAuth;
-		char* WiFiSSID;
-		char* WiFiPassword;
+        /**
+         * @brief Get Firebase data.
+         *
+         * Get data of variable from Firebase.
+         *
+         * @param id path to variable
+         *
+         * @return data
+         */
+        int getFirebase(char*);
+
+        /**
+         * @brief Set Firebase data.
+         *
+         * Set data of variable in Firebase.
+         *
+         * @param id path to variable
+         * @param data data
+         *
+         * @return success
+         */
+        bool setFirebase(char*, int);
+
+    private:
+        char* FirebaseHost;
+        char* FirebaseAuth;
+        char* WiFiSsid;
+        char* WiFiPassword;
 };
+
+#endif /* AEF_H */

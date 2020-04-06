@@ -1,19 +1,15 @@
-#include "src\Lidar.h"
+#include "src/Lidar.h"
 
-double measurement;
+#define SPOT_DISTANCE ? // TODO: set reasonable edge to parking spot
+
+Lidar lidar; // TODO: see if this still works if global instead of re-initializing everytime in loop()
 
 void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
+    // Communicate availability to WiFi module
+    pinMode(?, OUTPUT); // TODO: from PCB, which Arduino pin is connected to WiFi module IO2
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  Lidar lidar;
-  while(true)
-  {
-      measurement = lidar.getDistance(Lidar::METER);
-      Serial.print("Measured Distance: ");
-      Serial.println(measurement);
-  }
+    // Transmit availability to WiFi module
+    digitalWrite(?, lidar.getDistance(Lidar::METER) < SPOT_DISTANCE);  // TODO: from PCB, which Arduino pin is connected to WiFi module IO2
 }
