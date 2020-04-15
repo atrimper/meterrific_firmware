@@ -28,20 +28,21 @@ class Lcd {
         void clear();
 
         /**
-         * @brief Print characters.
+         * @brief Print character array.
          *
          * Print desired characters on screen.
          *
          * @param text characters
+         * @param size length of array
          */
         void print(char*, int);
 
         /**
-         * @brief Print integers.
+         * @brief Print characters via ASCII.
          *
-         * Print desired integers on screen.
+         * Print desired ASCII values on screen.
          *
-         * @param text integers
+         * @param text ASCII values
          */
         void print(int);
 

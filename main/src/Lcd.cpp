@@ -60,5 +60,6 @@ void Lcd::print(int text) {
 
     // Print text
     LcdSerial->write(text);
+    LcdSerial->write('\0');
     delay(24);
 }
