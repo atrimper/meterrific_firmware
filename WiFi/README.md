@@ -28,17 +28,25 @@ The following table describe the necessary pin layout to flash and run firmware 
 | GND | GND | Pin 2 | Pin 2 |
 
 ## Software Setup
-Before compiling and uploading, you must change your board to `Generic ESP8266 Module` to properly flash the WiFi module.
+Before compiling and uploading, you must (1) make sure your Arduino is clean and (2) change your board to `Generic ESP8266 Module` to properly flash the WiFi module.
 
 To do this,
+**Part 1**
+1. Connect your Arduino to your computer
+2. Open a new sketch
+3. In `Tools` > `Board: `, you should click on your Arduino board
+4. Compile empty code
+5. Upload empty code
+
+**Part 2**
 1. Download this repository to your preferred directory (e.g. `Desktop`)
 2. In `Arduino IDE` > `Preferences`, change `Sketchbook Location` to `path-to-repository/WiFi/Arduino` (e.g. `~/Desktop/meterrific_firmware/WiFi/Arduino`) and click `OK` to apply changes
-3. In `Tools` > `Board: `, you should find `Generic ESP8266 Module`
+3. In `Tools` > `Board: `, you should click on `Generic ESP8266 Module`
 
 ## Flashing Procedure
 1. Setup hardware and software as detailed above
-2. Compile code
-3. Attempt to upload code
+2. Compile WiFi code
+3. Attempt to upload WiFi code
 4. When you see `Connecting...` printing, press the reset and flash pushbuttons at the same time
 5. Release the reset pushbutton
 6. When you see upload percentages printing, release the flash pushbutton
