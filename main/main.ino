@@ -1,21 +1,12 @@
-// #include "src/Lidar.h"
 #include "src/Lcd.h"
-
-// Meter Properties
-// #define SPOT_DISTANCE 0.8 // TODO: set reasonable edge to parking spot
+#include <math.h>
+#include <string.h>
 
 // Globals
-// Lidar lidar; // TODO: see if this still works as global instead of re-initializing everytime in loop()
 Lcd* lcd;
 SoftwareSerial* WiFiSerial;
 
 void setup() {
-    // Communicate availability to WiFi module
-    pinMode(2, INPUT); // TODO: comment if using LIDAR
-
-    // Test without LIDAR using serial monitor
-    // Serial.begin(9600);
-
     // Initialize WiFi communication
     WiFiSerial = new SoftwareSerial(6, 7);
     WiFiSerial->begin(9600);
@@ -31,20 +22,6 @@ void setup() {
 }
 
 void loop() {
-    // Test without LIDAR using serial monitor
-    // if (Serial.available() > 0) {
-    //     int availability = Serial.read();
-    //     if (availability == '0') {
-    //         digitalWrite(2, LOW);
-    //     } else if (availability == '1') {
-    //         digitalWrite(2, HIGH);
-    //     }
-    // }
-
-    // Transmit availability to WiFi module
-    int availability = digitalRead(2); // TODO: replace with lidar.getDistance(Lidar::METER) < SPOT_DISTANCE;
-    WiFiSerial->write(availability);
-
     // Receive time remaining from WiFi module and print on LCD
     if (WiFiSerial->available() > 0) {
         lcd->clear();
@@ -59,10 +36,14 @@ void loop() {
         } else {
             lcd->print("\n\n\n\n\n  TIME REMAINING\n   ", 26);
             int timeRemaining = 0;
-            for(int i = 0; i < len; i = i + 1) {
-                timeRemaining = timeRemaining + buffer[i]*pow(10, len-1)/pow(10, i);
+            for (int i = 0; i < len; i = i + 1) {
+                timeRemaining = timeRemaining + (buffer[i] - 48)*pow(10, len-1)/pow(10, i);
             }
-            lcd->print(timeRemaining);
+            timeRemaining = (int)(timeRemaining/60);
+            char timeRemaining_str[4];
+            itoa(timeRemaining, timeRemaining_str, 10);
+            len = floor(log10(abs(timeRemaining))) + 1;
+            lcd->print(timeRemaining_str, len+1);
             lcd->print(" MINUTES", 9);
         }
     } else {

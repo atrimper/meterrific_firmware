@@ -5,8 +5,7 @@
 #define FIREBASE_KEY "NfEahxyZp3F4ayCjkQsLSlFzdIpcji3kjMgQDQte"
 #define WIFI_SSID "ssid"
 #define WIFI_PASSWORD "password"
-#define AVAILABILITY_ID "meters/-M4tkgQPu0hlAnRUMIwj/availability"
-#define TIME_REMAINING_ID "meters/-M4tkgQPu0hlAnRUMIwj/timeRemaining"
+#define TIME_REMAINING_ID "meters/-M4tl72ppJpQcdsJnCPB/timeRemaining"
 
 // Global
 AEF* aef;
@@ -20,16 +19,6 @@ void setup() {
 }
 
 void loop() {
-    // Receive availability from Arduino and set in Firebase
-    if (Serial.available() > 0) {
-        int availability = Serial.read();
-        bool success = false;
-        while (!success) {
-            success = aef->setFirebase(AVAILABILITY_ID, availability);
-            delay(500);
-        }
-    }
-
     // Get time remaining from Firebase and transmit to Arduino
     int timeRemaining = aef->getFirebase(TIME_REMAINING_ID);
     Serial.print(timeRemaining, DEC);
