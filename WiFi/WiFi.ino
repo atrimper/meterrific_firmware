@@ -31,10 +31,8 @@ void loop() {
     }
 
     // Get time remaining from Firebase and transmit to Arduino
-    if (Serial.availableForWrite() > 0) {
-        int timeRemaining = aef->getFirebase(TIME_REMAINING_ID);
-        Serial.print(timeRemaining, DEC);
-    }
+    int timeRemaining = aef->getFirebase(TIME_REMAINING_ID);
+    Serial.print(timeRemaining, DEC);
 
     // Rest delay
     delay(5000);

@@ -48,7 +48,7 @@ void loop() {
     // Receive time remaining from WiFi module and print on LCD
     if (WiFiSerial->available() > 0) {
         lcd->clear();
-        int buffer[3];
+        int buffer[5];
         int len = 0;
         while (WiFiSerial->available() > 0) {
             buffer[len] = WiFiSerial->read();
@@ -58,10 +58,11 @@ void loop() {
             lcd->print("\n\n\n\nPAY ELECTRONICALLY\n  WITH METERRIFIC\n\n\n\n OR PAY PHYSICALLY\nWITH PARKING METER", 84);
         } else {
             lcd->print("\n\n\n\n\n  TIME REMAINING\n   ", 26);
+            int timeRemaining = 0;
             for(int i = 0; i < len; i = i + 1) {
-                lcd->print(buffer[i]);
-                Serial.println(buffer[i]);
+                timeRemaining = timeRemaining + buffer[i]*pow(10, len-1)/pow(10, i);
             }
+            lcd->print(timeRemaining);
             lcd->print(" MINUTES", 9);
         }
     } else {
